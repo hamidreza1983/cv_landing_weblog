@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'my_weblog.apps.MyWeblogConfig', #  << >> create new app
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'template'], # create base directory of template and chang path to root dir
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,7 +116,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
+# create static root and static url and static files directory
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR.joinpath('/static')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR.joinpath('/media')
+
+STATICFILES_DIRS = [
+    BASE_DIR/'static',
+    BASE_DIR/'media' ,
+]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
